@@ -1,5 +1,6 @@
 package com.arsalmairaj.gemwebapi
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     // Your phone and computer must be on the same WiFi network.
     private val apiUrl = "http://192.168.18.80:5002/abc"
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Set the content view directly from the layout file
@@ -72,6 +74,7 @@ class MainActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
 
             // Handle network request failure
+            @SuppressLint("SetTextI18n")
             override fun onFailure(call: Call, e: IOException) {
                 e.printStackTrace()
                 // Update the UI on the main thread
@@ -86,6 +89,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             // Handle network request success
+            @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
                 // --- THIS IS THE FIX ---
                 // Read the response body on the background thread first.
